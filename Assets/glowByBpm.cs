@@ -11,7 +11,7 @@ public class glowByBpm : MonoBehaviour
 
     void Start()
     {
-      animator.speed = bpm / 60;
+      animator.speed = bpm / 120;
     }
 
     // Update is called once per frame
