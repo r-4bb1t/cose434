@@ -1,11 +1,8 @@
 fileFormatVersion: 2
-guid: f0f941917555948409cff66760d203ab
+guid: a0d81d6d4a2e0f54aad1c662efb88fc0
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable:
-  - first:
-      74: 2907375630332524209
-    second: "\uC6D0\uD615|\uC6D0\uD615Action"
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
