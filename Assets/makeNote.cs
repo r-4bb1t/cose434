@@ -1,3 +1,5 @@
+using System.Dynamic;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,6 +48,26 @@ public class makeNote : MonoBehaviour
     int n;
     float deltaTime = 0.0f;
     private AudioSource audioSource;
+    private IEnumerator makeLongNote;
+    private float num = 10;
+    private bool[] isLongNote = { false, false, false, false, false, false, false, false };
+
+    IEnumerator MakeLongNote(int dir, float delay)
+    {
+        while (true)
+        {
+            GameObject ln = Instantiate(longNote);
+            ln.transform.SetParent(UI.transform);
+            ln.transform.localPosition = Vector3.zero;
+
+            ln.GetComponent<NoteParent>().dir = dir * 45;
+            Destroy(ln, 2f);
+
+            Debug.Log(delay.ToString());
+
+            yield return new WaitForSeconds(delay);
+        }
+    }
 
     void MakeNote()
     {
@@ -69,18 +91,34 @@ public class makeNote : MonoBehaviour
 
                 sn.GetComponent<NoteParent>().dir = i * 45;
                 Destroy(sn, 2f);
+
+
+                isLongNote[i] = true;
+                makeLongNote = MakeLongNote(i, 60f / (float)data.bpm / num);
+                StartCoroutine(makeLongNote);
             }
-            if (note.noteType == 3)
+            /* if (note.noteType == 3)
             {
+                StopCoroutine(makeLongNote);
+
                 GameObject ln = Instantiate(longNote);
                 ln.transform.SetParent(UI.transform);
                 ln.transform.localPosition = Vector3.zero;
 
                 ln.GetComponent<NoteParent>().dir = i * 45;
                 Destroy(ln, 2f);
-            }
+
+                makeLongNote = MakeLongNote(i, 60f / (float)data.bpm / num);
+                StartCoroutine(makeLongNote);
+            } */
             if (note.noteType == 4)
             {
+                if (isLongNote[i])
+                {
+                    StopCoroutine(makeLongNote);
+                    isLongNote[i] = false;
+                }
+
                 GameObject en = Instantiate(endNote);
                 en.transform.SetParent(UI.transform);
                 en.transform.localPosition = Vector3.zero;

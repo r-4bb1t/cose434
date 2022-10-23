@@ -16,7 +16,31 @@
             { "noteType": 0 },
             { "noteType": 0 },
             { "noteType": 0 },
-            { "noteType": 1 },
+            { "noteType": 0 },
+            { "noteType": 0 }
+          ]
+        },
+        {
+          "notes": [
+            { "noteType": 0 },
+            { "noteType": 3 },
+            { "noteType": 0 },
+            { "noteType": 0 },
+            { "noteType": 0 },
+            { "noteType": 0 },
+            { "noteType": 0 },
+            { "noteType": 0 }
+          ]
+        },
+        {
+          "notes": [
+            { "noteType": 0 },
+            { "noteType": 3 },
+            { "noteType": 0 },
+            { "noteType": 0 },
+            { "noteType": 0 },
+            { "noteType": 0 },
+            { "noteType": 0 },
             { "noteType": 0 }
           ]
         },
@@ -51,31 +75,7 @@
             { "noteType": 0 },
             { "noteType": 0 },
             { "noteType": 0 },
-            { "noteType": 1 },
             { "noteType": 0 },
-            { "noteType": 0 }
-          ]
-        },
-        {
-          "notes": [
-            { "noteType": 0 },
-            { "noteType": 3 },
-            { "noteType": 0 },
-            { "noteType": 0 },
-            { "noteType": 0 },
-            { "noteType": 0 },
-            { "noteType": 0 },
-            { "noteType": 0 }
-          ]
-        },
-        {
-          "notes": [
-            { "noteType": 0 },
-            { "noteType": 3 },
-            { "noteType": 1 },
-            { "noteType": 0 },
-            { "noteType": 0 },
-            { "noteType": 1 },
             { "noteType": 0 },
             { "noteType": 0 }
           ]
@@ -208,7 +208,7 @@
             { "noteType": 0 },
             { "noteType": 0 },
             { "noteType": 0 },
-            { "noteType": 1 },
+            { "noteType": 0 },
             { "noteType": 0 }
           ]
         },
