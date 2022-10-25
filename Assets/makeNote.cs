@@ -60,33 +60,43 @@ public class makeNote : MonoBehaviour
     private bool[] isLongNote = { false, false, false, false, false, false, false, false };
     private bool[] isDoub = { false, false, false, false, false, false, false, false };
     private float OFFSET = 1.0f;
-    private int DIROFFSET = 90;
+    private int DIROFFSET = 135;
     private float DURATION = 1.5f;
 
-    IEnumerator MakeLongNote(int dir, float delay, bool doub, int i)
+    IEnumerator MakeLongNote(int dir, float delay, bool doub)
     {
         while (true)
         {
-            if (i == 1) yield return new WaitForSeconds(delay / 2f);
             GameObject ln = null;
-            if (i == 0)
-            {
-                if (doub) ln = Instantiate(longNoteDouble);
-                else ln = Instantiate(longNote);
-            }
-            else
-            {
-                if (doub) ln = Instantiate(dotDouble);
-                else ln = Instantiate(dot);
-            }
+            if (doub) ln = Instantiate(longNoteDouble);
+            else ln = Instantiate(longNote);
+
             ln.transform.SetParent(UI.transform);
             ln.transform.localPosition = Vector3.zero;
 
             ln.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
             Destroy(ln, DURATION);
 
-            if (i == 0) yield return new WaitForSeconds(delay);
-            else yield return new WaitForSeconds(delay / 2f);
+            yield return new WaitForSeconds(delay);
+        }
+    }
+
+    IEnumerator MakeDot(int dir, float delay, bool doub)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(delay / 2);
+            GameObject d = null;
+            if (doub) d = Instantiate(dotDouble);
+            else d = Instantiate(dot);
+
+            d.transform.SetParent(UI.transform);
+            d.transform.localPosition = Vector3.zero;
+
+            d.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
+            Destroy(d, DURATION);
+
+            yield return new WaitForSeconds(delay / 2);
         }
     }
 
@@ -122,20 +132,22 @@ public class makeNote : MonoBehaviour
 
                 isLongNote[i] = true;
                 isDoub[i] = doub;
-                makeLongNote[i] = MakeLongNote(i, 60f / (float)data.bpm, doub, 0);
-                makeDot[i] = MakeLongNote(i, 60f / (float)data.bpm, doub, 1);
-                StartCoroutine(makeLongNote[i]);
+                makeLongNote[i] = MakeLongNote(i, 60f / (float)data.bpm, doub);
+                makeDot[i] = MakeDot(i, 60f / (float)data.bpm / 6, doub);
+                //StartCoroutine(makeLongNote[i]);
                 StartCoroutine(makeDot[i]);
             }
-            /*if (note.noteType == 3)
+            /* if (note.noteType == 3)
             {
-                GameObject sn = Instantiate(longNote);
-                sn.transform.SetParent(UI.transform);
-                sn.transform.localPosition = Vector3.zero;
+                GameObject ln = null;
+                if (doub) ln = Instantiate(longNoteDouble);
+                else ln = Instantiate(longNote);
+                ln.transform.SetParent(UI.transform);
+                ln.transform.localPosition = Vector3.zero;
 
-                sn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
-                Destroy(sn, 2f);
-            }*/
+                ln.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
+                Destroy(ln, DURATION);
+            } */
             if (note.noteType == 4)
             {
                 if (isLongNote[i])
@@ -187,7 +199,6 @@ public class makeNote : MonoBehaviour
         SetUI();
         Invoke("setBgm", 5f);
         InvokeRepeating("MakeNote", 5f + OFFSET, 60f / (float)data.bpm / num);
-
     }
 
     // Update is called once per frame
