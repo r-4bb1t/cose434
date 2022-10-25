@@ -42,28 +42,36 @@ public class makeNote : MonoBehaviour
     public GameObject longNote;
     public GameObject startNote;
     public GameObject endNote;
+    public GameObject defaultNoteDouble;
+    public GameObject longNoteDouble;
+    public GameObject startNoteDouble;
+    public GameObject endNoteDouble;
     public GameObject UI;
     NoteParent script;
     Chart data;
     int n;
     float deltaTime = 0.0f;
     private AudioSource audioSource;
-    private IEnumerator makeLongNote;
-    private float num = 10;
+    private IEnumerator[] makeLongNote = { null, null, null, null, null, null, null, null };
+    private float num = 12;
     private bool[] isLongNote = { false, false, false, false, false, false, false, false };
+    private bool[] isDoub = { false, false, false, false, false, false, false, false };
+    private float OFFSET = 1.0f;
+    private int DIROFFSET = 90;
+    private float DURATION = 1.5f;
 
-    IEnumerator MakeLongNote(int dir, float delay)
+    IEnumerator MakeLongNote(int dir, float delay, bool doub)
     {
         while (true)
         {
-            GameObject ln = Instantiate(longNote);
+            GameObject ln = null;
+            if (doub) ln = Instantiate(longNoteDouble);
+            else Instantiate(longNote);
             ln.transform.SetParent(UI.transform);
             ln.transform.localPosition = Vector3.zero;
 
-            ln.GetComponent<NoteParent>().dir = dir * 45;
-            Destroy(ln, 2f);
-
-            Debug.Log(delay.ToString());
+            ln.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
+            Destroy(ln, DURATION);
 
             yield return new WaitForSeconds(delay);
         }
@@ -71,60 +79,64 @@ public class makeNote : MonoBehaviour
 
     void MakeNote()
     {
+        int noteCnt = 0;
+        for (int i = 0; i < 8; i++) if (data.bars[n / 48].beats[n % 48].notes[i].noteType == 1 || data.bars[n / 48].beats[n % 48].notes[i].noteType == 2) noteCnt++;
+        bool doub = (noteCnt >= 2);
         for (int i = 0; i < 8; i++)
         {
-            Note note = data.bars[0].beats[n].notes[i];
+            Note note = data.bars[n / 48].beats[n % 48].notes[i];
             if (note.noteType == 1)
             {
-                GameObject dn = Instantiate(defaultNote);
+                GameObject dn = null;
+                if (!doub) dn = Instantiate(defaultNote);
+                else dn = Instantiate(defaultNoteDouble);
                 dn.transform.SetParent(UI.transform);
                 dn.transform.localPosition = Vector3.zero;
 
-                dn.GetComponent<NoteParent>().dir = i * 45;
-                Destroy(dn, 2f);
+                dn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
+                Destroy(dn, DURATION);
             }
             if (note.noteType == 2)
             {
-                GameObject sn = Instantiate(startNote);
+                GameObject sn = null;
+                if (!doub) sn = Instantiate(startNote);
+                else sn = Instantiate(startNoteDouble);
                 sn.transform.SetParent(UI.transform);
                 sn.transform.localPosition = Vector3.zero;
 
-                sn.GetComponent<NoteParent>().dir = i * 45;
-                Destroy(sn, 2f);
-
+                sn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
+                Destroy(sn, DURATION);
 
                 isLongNote[i] = true;
-                makeLongNote = MakeLongNote(i, 60f / (float)data.bpm / num);
-                StartCoroutine(makeLongNote);
+                isDoub[i] = doub;
+                makeLongNote[i] = MakeLongNote(i, 60f / (float)data.bpm, doub);
+                StartCoroutine(makeLongNote[i]);
             }
-            /* if (note.noteType == 3)
+            /*if (note.noteType == 3)
             {
-                StopCoroutine(makeLongNote);
+                GameObject sn = Instantiate(longNote);
+                sn.transform.SetParent(UI.transform);
+                sn.transform.localPosition = Vector3.zero;
 
-                GameObject ln = Instantiate(longNote);
-                ln.transform.SetParent(UI.transform);
-                ln.transform.localPosition = Vector3.zero;
-
-                ln.GetComponent<NoteParent>().dir = i * 45;
-                Destroy(ln, 2f);
-
-                makeLongNote = MakeLongNote(i, 60f / (float)data.bpm / num);
-                StartCoroutine(makeLongNote);
-            } */
+                sn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
+                Destroy(sn, 2f);
+            }*/
             if (note.noteType == 4)
             {
                 if (isLongNote[i])
                 {
-                    StopCoroutine(makeLongNote);
+                    StopCoroutine(makeLongNote[i]);
                     isLongNote[i] = false;
                 }
 
-                GameObject en = Instantiate(endNote);
+                GameObject en = null;
+                if (!isDoub[i]) en = Instantiate(endNote);
+                else en = Instantiate(endNoteDouble);
                 en.transform.SetParent(UI.transform);
                 en.transform.localPosition = Vector3.zero;
 
-                en.GetComponent<NoteParent>().dir = i * 45;
-                Destroy(en, 2f);
+                en.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
+                Destroy(en, DURATION);
             }
         }
         n++;
@@ -147,7 +159,7 @@ public class makeNote : MonoBehaviour
 
     private void Awake()
     {
-        Application.targetFrameRate = 40;
+        Application.targetFrameRate = 60;
     }
 
     void Start()
@@ -156,7 +168,7 @@ public class makeNote : MonoBehaviour
         data = JsonUtility.FromJson<Chart>(loadedJson.ToString());
         SetUI();
         Invoke("setBgm", 5f);
-        InvokeRepeating("MakeNote", 5f - 0.5f, 60f / (float)data.bpm);
+        InvokeRepeating("MakeNote", 5f + OFFSET, 60f / (float)data.bpm / num);
 
     }
 

@@ -13,6 +13,6 @@ public class NoteParent : MonoBehaviour
 
     void Update()
     {
-        transform.localScale = new Vector3(transform.localScale.x + 0.05f, transform.localScale.y + 0.05f, transform.localScale.z + 0.05f);
+        transform.localScale = new Vector3(transform.localScale.x + 0.03f, transform.localScale.y + 0.03f, transform.localScale.z + 0.03f);
     }
 }

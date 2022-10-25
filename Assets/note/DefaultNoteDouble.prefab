@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2968701609430947929}
   - component: {fileID: 2968701609430947928}
   m_Layer: 0
-  m_Name: EndNote
+  m_Name: DefaultNoteDouble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 2968701609430947934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50.000004, z: 50.000004}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 50.000004, y: 50.000004, z: 50.000004}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2968701609555992397}
   m_Father: {fileID: 0}
@@ -57,7 +57,6 @@ GameObject:
   - component: {fileID: 2968701609555992397}
   - component: {fileID: 2968701609555992434}
   - component: {fileID: 2968701609555992435}
-  - component: {fileID: 6319914073288261198}
   m_Layer: 0
   m_Name: Note
   m_TagString: Untagged
@@ -108,7 +107,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1d8a74bb8ed5dd64899b1932dbeead22, type: 2}
+  - {fileID: 2100000, guid: 3bc316770bd034897bcb0d18e79bc18a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,17 +129,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6319914073288261198
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2968701609555992432}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8537072166115684263, guid: 0449fcc9325849044bd97f22eac32cdf, type: 3}
