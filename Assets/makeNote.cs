@@ -66,7 +66,7 @@ public class makeNote : MonoBehaviour
         {
             GameObject ln = null;
             if (doub) ln = Instantiate(longNoteDouble);
-            else Instantiate(longNote);
+            else ln = Instantiate(longNote);
             ln.transform.SetParent(UI.transform);
             ln.transform.localPosition = Vector3.zero;
 
@@ -137,6 +137,8 @@ public class makeNote : MonoBehaviour
 
                 en.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
                 Destroy(en, DURATION);
+
+                isDoub[i] = false;
             }
         }
         n++;
