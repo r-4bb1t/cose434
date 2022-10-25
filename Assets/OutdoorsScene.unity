@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13408852, g: 0.13643456, b: 0.28989792, a: 1}
+  m_IndirectSpecularColor: {r: 0.134022, g: 0.13637513, b: 0.28972274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3713,6 +3713,7 @@ MonoBehaviour:
   startNote: {fileID: 2968701609430947934, guid: dfbc060da6726e746aa6057f1b380457,
     type: 3}
   endNote: {fileID: 2968701609430947934, guid: f226e03f230fc0a42ad2c7346baa4085, type: 3}
+  dot: {fileID: 2968701609430947934, guid: 026b4ae166c59044789079c7ae44a179, type: 3}
   defaultNoteDouble: {fileID: 2968701609430947934, guid: f2ae65ea4ab494f19942cc6196d95e1d,
     type: 3}
   longNoteDouble: {fileID: 2968701609430947934, guid: 8928ad03a463143d79d76b6905d6f15f,
@@ -3720,6 +3721,8 @@ MonoBehaviour:
   startNoteDouble: {fileID: 2968701609430947934, guid: 3ce15b4aec1a341ce9f10f37030d4824,
     type: 3}
   endNoteDouble: {fileID: 2968701609430947934, guid: 8ba4c3e611a2040498d5854aca9882cc,
+    type: 3}
+  dotDouble: {fileID: 2968701609430947934, guid: 1774bc9fe974230419db05d2f568b7df,
     type: 3}
   UI: {fileID: 770504463}
 --- !u!4 &953041924

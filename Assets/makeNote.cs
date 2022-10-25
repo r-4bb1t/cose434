@@ -42,10 +42,12 @@ public class makeNote : MonoBehaviour
     public GameObject longNote;
     public GameObject startNote;
     public GameObject endNote;
+    public GameObject dot;
     public GameObject defaultNoteDouble;
     public GameObject longNoteDouble;
     public GameObject startNoteDouble;
     public GameObject endNoteDouble;
+    public GameObject dotDouble;
     public GameObject UI;
     NoteParent script;
     Chart data;
@@ -53,6 +55,7 @@ public class makeNote : MonoBehaviour
     float deltaTime = 0.0f;
     private AudioSource audioSource;
     private IEnumerator[] makeLongNote = { null, null, null, null, null, null, null, null };
+    private IEnumerator[] makeDot = { null, null, null, null, null, null, null, null };
     private float num = 12;
     private bool[] isLongNote = { false, false, false, false, false, false, false, false };
     private bool[] isDoub = { false, false, false, false, false, false, false, false };
@@ -60,20 +63,30 @@ public class makeNote : MonoBehaviour
     private int DIROFFSET = 90;
     private float DURATION = 1.5f;
 
-    IEnumerator MakeLongNote(int dir, float delay, bool doub)
+    IEnumerator MakeLongNote(int dir, float delay, bool doub, int i)
     {
         while (true)
         {
+            if (i == 1) yield return new WaitForSeconds(delay / 2f);
             GameObject ln = null;
-            if (doub) ln = Instantiate(longNoteDouble);
-            else ln = Instantiate(longNote);
+            if (i == 0)
+            {
+                if (doub) ln = Instantiate(longNoteDouble);
+                else ln = Instantiate(longNote);
+            }
+            else
+            {
+                if (doub) ln = Instantiate(dotDouble);
+                else ln = Instantiate(dot);
+            }
             ln.transform.SetParent(UI.transform);
             ln.transform.localPosition = Vector3.zero;
 
             ln.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
             Destroy(ln, DURATION);
 
-            yield return new WaitForSeconds(delay);
+            if (i == 0) yield return new WaitForSeconds(delay);
+            else yield return new WaitForSeconds(delay / 2f);
         }
     }
 
@@ -109,8 +122,10 @@ public class makeNote : MonoBehaviour
 
                 isLongNote[i] = true;
                 isDoub[i] = doub;
-                makeLongNote[i] = MakeLongNote(i, 60f / (float)data.bpm, doub);
+                makeLongNote[i] = MakeLongNote(i, 60f / (float)data.bpm, doub, 0);
+                makeDot[i] = MakeLongNote(i, 60f / (float)data.bpm, doub, 1);
                 StartCoroutine(makeLongNote[i]);
+                StartCoroutine(makeDot[i]);
             }
             /*if (note.noteType == 3)
             {
@@ -126,6 +141,7 @@ public class makeNote : MonoBehaviour
                 if (isLongNote[i])
                 {
                     StopCoroutine(makeLongNote[i]);
+                    StopCoroutine(makeDot[i]);
                     isLongNote[i] = false;
                 }
 
