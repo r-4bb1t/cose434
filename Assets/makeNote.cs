@@ -49,6 +49,7 @@ public class makeNote : MonoBehaviour
     public GameObject endNoteDouble;
     public GameObject dotDouble;
     public GameObject UI;
+    public GameObject game;
     NoteParent script;
     Chart data;
     int n;
@@ -71,7 +72,7 @@ public class makeNote : MonoBehaviour
             if (doub) ln = Instantiate(longNoteDouble);
             else ln = Instantiate(longNote);
 
-            ln.transform.SetParent(UI.transform);
+            ln.transform.SetParent(game.transform);
             ln.transform.localPosition = Vector3.zero;
 
             ln.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
@@ -90,7 +91,7 @@ public class makeNote : MonoBehaviour
             if (doub) d = Instantiate(dotDouble);
             else d = Instantiate(dot);
 
-            d.transform.SetParent(UI.transform);
+            d.transform.SetParent(game.transform);
             d.transform.localPosition = Vector3.zero;
 
             d.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
@@ -113,7 +114,7 @@ public class makeNote : MonoBehaviour
                 GameObject dn = null;
                 if (!doub) dn = Instantiate(defaultNote);
                 else dn = Instantiate(defaultNoteDouble);
-                dn.transform.SetParent(UI.transform);
+                dn.transform.SetParent(game.transform);
                 dn.transform.localPosition = Vector3.zero;
 
                 dn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
@@ -124,7 +125,7 @@ public class makeNote : MonoBehaviour
                 GameObject sn = null;
                 if (!doub) sn = Instantiate(startNote);
                 else sn = Instantiate(startNoteDouble);
-                sn.transform.SetParent(UI.transform);
+                sn.transform.SetParent(game.transform);
                 sn.transform.localPosition = Vector3.zero;
 
                 sn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
@@ -160,7 +161,7 @@ public class makeNote : MonoBehaviour
                 GameObject en = null;
                 if (!isDoub[i]) en = Instantiate(endNote);
                 else en = Instantiate(endNoteDouble);
-                en.transform.SetParent(UI.transform);
+                en.transform.SetParent(game.transform);
                 en.transform.localPosition = Vector3.zero;
 
                 en.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
