@@ -175,9 +175,9 @@ public class makeNote : MonoBehaviour
 
     void SetUI()
     {
-        UI.transform.Find("Title").GetComponent<TextMeshProUGUI>().text = data.title;
-        UI.transform.Find("Composer").GetComponent<TextMeshProUGUI>().text = data.composer;
-        UI.transform.Find("Level").GetComponent<TextMeshProUGUI>().text = "LV " + data.level;
+        UI.transform.Find("Title").GetComponent<TextMeshPro>().text = data.title;
+        UI.transform.Find("Composer").GetComponent<TextMeshPro>().text = data.composer;
+        UI.transform.Find("Level").GetComponent<TextMeshPro>().text = "LV " + data.level;
     }
 
     void setBgm()
@@ -206,6 +206,6 @@ public class makeNote : MonoBehaviour
     void Update()
     {
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-        UI.transform.Find("FPS").GetComponent<TextMeshProUGUI>().text = "FPS " + (1.0f / deltaTime).ToString();
+        UI.transform.Find("FPS").GetComponent<TextMeshPro>().text = "FPS " + (1.0f / deltaTime).ToString();
     }
 }
