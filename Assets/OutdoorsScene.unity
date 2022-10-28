@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.134022, g: 0.13637513, b: 0.28972274, a: 1}
+  m_IndirectSpecularColor: {r: 0.13417232, g: 0.1365596, b: 0.2901864, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -295,7 +295,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102018203}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -346,7 +346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102018203}
   m_LocalRotation: {x: -0, y: -0, z: -0.98078537, w: -0.19509031}
-  m_LocalPosition: {x: -0.0029999984, y: -0.007400003, z: -0.005}
+  m_LocalPosition: {x: -0.0029999984, y: -0.007400003, z: 0}
   m_LocalScale: {x: 0.002999999, y: 0.002999999, z: 0.003}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2113,7 +2113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.73
+      value: -4.87
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3568,7 +3568,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971153939}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3619,7 +3619,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971153939}
   m_LocalRotation: {x: -0, y: -0, z: -0.5555702, w: 0.8314697}
-  m_LocalPosition: {x: 0.0074, y: 0.0029999984, z: -0.005}
+  m_LocalPosition: {x: 0.0074, y: 0.0029999984, z: 0}
   m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3908,7 +3908,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007113463}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3959,7 +3959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007113463}
   m_LocalRotation: {x: -0, y: -0, z: -0.8314697, w: 0.5555702}
-  m_LocalPosition: {x: 0.0074, y: -0.0029999989, z: -0.005}
+  m_LocalPosition: {x: 0.0074, y: -0.0029999989, z: 0}
   m_LocalScale: {x: 0.0029999996, y: 0.0029999996, z: 0.003}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4084,8 +4084,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029216332}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 19000, y: 19000, z: 19000}
+  m_LocalPosition: {x: 0, y: 0, z: -123.2}
+  m_LocalScale: {x: 6000, y: 6000, z: 6000}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1283426281}
@@ -5274,7 +5274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283426280}
   m_LocalRotation: {x: 0, y: 0, z: -0.19509031, w: 0.98078537}
-  m_LocalPosition: {x: 0.003, y: 0.0074, z: -0.005}
+  m_LocalPosition: {x: 0.003, y: 0.0074, z: 0}
   m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5301,7 +5301,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283426280}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6056,7 +6056,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392998552}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6107,7 +6107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392998552}
   m_LocalRotation: {x: -0, y: -0, z: -0.48098886, w: -0.8767268}
-  m_LocalPosition: {x: -0.0074, y: 0.0029999984, z: -0.005}
+  m_LocalPosition: {x: -0.0074, y: 0.0029999984, z: 0}
   m_LocalScale: {x: 0.0029999996, y: 0.0029999996, z: 0.003}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -6166,7 +6166,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420571970}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6217,7 +6217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420571970}
   m_LocalRotation: {x: -0, y: -0, z: -0.98078525, w: 0.19509032}
-  m_LocalPosition: {x: 0.0029999984, y: -0.007400003, z: -0.005}
+  m_LocalPosition: {x: 0.0029999984, y: -0.007400003, z: 0}
   m_LocalScale: {x: 0.0030000012, y: 0.0030000012, z: 0.003}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -6759,7 +6759,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554721125}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6810,7 +6810,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554721125}
   m_LocalRotation: {x: -0, y: -0, z: -0.8314698, w: -0.55557}
-  m_LocalPosition: {x: -0.0074, y: -0.0029999996, z: -0.005}
+  m_LocalPosition: {x: -0.0074, y: -0.0029999996, z: 0}
   m_LocalScale: {x: 0.0030000007, y: 0.0030000007, z: 0.003}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -9609,7 +9609,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146808808}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -9660,7 +9660,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146808808}
   m_LocalRotation: {x: -0, y: -0, z: -0.10886717, w: -0.9940563}
-  m_LocalPosition: {x: -0.0029999984, y: 0.0074, z: -0.005}
+  m_LocalPosition: {x: -0.0029999984, y: 0.0074, z: 0}
   m_LocalScale: {x: 0.003000001, y: 0.003000001, z: 0.003}
   m_ConstrainProportionsScale: 1
   m_Children: []
