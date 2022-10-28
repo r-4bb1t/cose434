@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class Check : MonoBehaviour
 {
-    //OVRHand hand = GetComponent<OVRHand>();
+    public GameObject[] box = null;
+
     void Start()
     {
 
