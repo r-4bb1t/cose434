@@ -10,7 +10,6 @@ public class TouchscreenController : MonoBehaviour
     float touchDistance;
     Vector3 FingertipForward;
 
-    int t = 0;
     void Start()
     {
         FingertipForward = fingertip.transform.TransformDirection(Vector3.forward);
@@ -20,18 +19,17 @@ public class TouchscreenController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (t < 100)
-        {
-            t++;
-        }
-        if (Physics.Raycast(fingertip.transform.position, FingertipForward, out RaycastHit ray, touchDistance) && t >= 100)
+        if (Physics.Raycast(fingertip.transform.position, FingertipForward, out RaycastHit ray, touchDistance))
         {
             Collider rayCollider = ray.collider;
             if (rayCollider.gameObject.name.Equals("Emocloche"))
             {
                 rayCollider.gameObject.transform.Find("Light").GetComponent<Light>().enabled = true;
-                game.SetActive(true);
-                ui.SetActive(false);
+                if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+                {
+                    game.SetActive(true);
+                    ui.SetActive(false);
+                }
             }
         }
     }
