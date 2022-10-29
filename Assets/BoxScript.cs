@@ -37,7 +37,9 @@ public class BoxScript : MonoBehaviour
 
     public void Trigger()
     {
-        Debug.Log(FindClosestNote());
-        Destroy(FindClosestNote().gameObject);
+        GameObject nearest = FindClosestNote();
+        if (nearest == null) return;
+        Debug.Log(nearest);
+        Destroy(nearest.gameObject);
     }
 }
