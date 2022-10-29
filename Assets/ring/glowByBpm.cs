@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class glowByBpm : MonoBehaviour
+public class GlowByBpm : MonoBehaviour
 {
     // Start is called before the first frame update
 
@@ -11,12 +11,12 @@ public class glowByBpm : MonoBehaviour
 
     void Start()
     {
-      animator.speed = bpm / 120;
+        animator.speed = bpm / 120;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
