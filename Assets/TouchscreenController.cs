@@ -6,6 +6,7 @@ public class TouchscreenController : MonoBehaviour
 {
     public GameObject fingertip;
     public GameObject game;
+    public GameObject ui;
     bool isPointing;
     bool isTouching;
     float touchDistance;
@@ -28,7 +29,13 @@ public class TouchscreenController : MonoBehaviour
             Collider rayCollider = ray.collider;
             if (rayCollider.gameObject.name.Equals("Emocloche") && isPointing)
             {
-                Instantiate(game, new Vector3(-10.83f, 2.06f, -2.297f), new Quaternion(), gameObject.transform);
+                isTouching = true;
+                game.GetComponent<GameObject>().SetActive(true);
+                ui.GetComponent<GameObject>().SetActive(false);
+            }
+            else
+            {
+                isTouching = false;
             }
         }
     }
