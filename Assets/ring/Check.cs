@@ -6,7 +6,7 @@ public class Check : MonoBehaviour
     public GameObject leftFingertip = null;
     public GameObject rightFingertip = null;
     public GameObject[] boxes = null;
-    
+
     float touchDistance;
     Vector3 leftFingertipForward;
     Vector3 rightFingertipForward;

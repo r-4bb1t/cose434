@@ -17,7 +17,11 @@ public class BoxScript : MonoBehaviour
 
     public void Trigger()
     {
-        GameObject note = GameObject.FindGameObjectsWithTag("Note")[0];
-        Destroy(note);
+        GameObject[] notes = GameObject.FindGameObjectsWithTag("Note");
+        if (notes.Length > 0)
+        {
+            Debug.Log(notes[0].gameObject);
+            Destroy(notes[0].gameObject);
+        }
     }
 }
