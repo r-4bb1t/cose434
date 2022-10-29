@@ -27,9 +27,10 @@ public class TouchscreenController : MonoBehaviour
         if (Physics.Raycast(fingertip.transform.position, FingertipForward, out RaycastHit ray, touchDistance))
         {
             Collider rayCollider = ray.collider;
-            if (rayCollider.gameObject.name.Equals("Emocloche") && isPointing)
+            if (rayCollider.gameObject.name.Equals("Emocloche"))
             {
                 isTouching = true;
+                rayCollider.gameObject.GetComponent<GameObject>().transform.Find("Light").GetComponent<Light>().enabled = true;
                 game.GetComponent<GameObject>().SetActive(true);
                 ui.GetComponent<GameObject>().SetActive(false);
             }
