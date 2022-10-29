@@ -33,7 +33,7 @@ public class Check : MonoBehaviour
                 {
                     if (rayCollider.gameObject.name == box.name)
                     {
-                        box.GetComponent<MeshRenderer>().enabled = true;
+                        box.GetComponent<BoxScript>().Trigger();
                     }
                 }
             }
@@ -47,7 +47,7 @@ public class Check : MonoBehaviour
                 {
                     if (rayCollider.gameObject.name == box.name)
                     {
-                        box.GetComponent<MeshRenderer>().enabled = true;
+                        box.GetComponent<BoxScript>().Trigger();
                     }
                 }
             }
