@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.134022, g: 0.13637513, b: 0.28972274, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6136,6 +6136,7 @@ GameObject:
   - component: {fileID: 1743812786}
   - component: {fileID: 1743812785}
   - component: {fileID: 1743812784}
+  - component: {fileID: 1743812787}
   m_Layer: 5
   m_Name: Emocloche
   m_TagString: Untagged
@@ -6245,6 +6246,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743812782}
   m_CullTransparentMesh: 1
+--- !u!65 &1743812787
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743812782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 80, y: 80, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1753235008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7315,6 +7329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fingertip: {fileID: 753660571}
   game: {fileID: 404321080}
+  ui: {fileID: 0}
 --- !u!4 &1951637830
 Transform:
   m_ObjectHideFlags: 0
