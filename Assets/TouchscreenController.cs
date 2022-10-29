@@ -27,10 +27,12 @@ public class TouchscreenController : MonoBehaviour
                 rayCollider.gameObject.transform.Find("Light").GetComponent<Light>().enabled = true;
                 if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
                 {
-                    game.SetActive(true);
                     ui.SetActive(false);
+                    game.SetActive(true);
                 }
             }
+        } else {
+            ui.gameObject.transform.Find("Emocloche").Find("Light").GetComponent<Light>().enabled = false;
         }
     }
 }
