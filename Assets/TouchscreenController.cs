@@ -9,6 +9,8 @@ public class TouchscreenController : MonoBehaviour
     public GameObject ui;
     float touchDistance;
     Vector3 FingertipForward;
+
+    int t = 0;
     void Start()
     {
         FingertipForward = fingertip.transform.TransformDirection(Vector3.forward);
@@ -18,7 +20,11 @@ public class TouchscreenController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Physics.Raycast(fingertip.transform.position, FingertipForward, out RaycastHit ray, touchDistance))
+        if (t < 100)
+        {
+            t++;
+        }
+        if (Physics.Raycast(fingertip.transform.position, FingertipForward, out RaycastHit ray, touchDistance) && t >= 100)
         {
             Collider rayCollider = ray.collider;
             if (rayCollider.gameObject.name.Equals("Emocloche"))
