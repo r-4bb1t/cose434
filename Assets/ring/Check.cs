@@ -14,7 +14,7 @@ public class Check : MonoBehaviour
     {
         leftFingertipForward = leftFingertip.transform.TransformDirection(Vector3.forward);
         rightFingertipForward = rightFingertip.transform.TransformDirection(Vector3.forward);
-        touchDistance = 0.5f;
+        touchDistance = 2f;
     }
 
     void Update()
@@ -33,7 +33,7 @@ public class Check : MonoBehaviour
                 {
                     if (rayCollider.gameObject.name == box.name)
                     {
-                        box.GetComponent<Mesh>().enabled = true;
+                        box.GetComponent<MeshRenderer>().enabled = true;
                     }
                 }
             }
@@ -43,6 +43,13 @@ public class Check : MonoBehaviour
             Collider rayCollider = ray2.collider;
             if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) || OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
             {
+                foreach (GameObject box in boxes)
+                {
+                    if (rayCollider.gameObject.name == box.name)
+                    {
+                        box.GetComponent<MeshRenderer>().enabled = true;
+                    }
+                }
             }
         }
     }
