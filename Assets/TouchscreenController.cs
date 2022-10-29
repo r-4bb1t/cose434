@@ -9,11 +9,12 @@ public class TouchscreenController : MonoBehaviour
     public GameObject ui;
     float touchDistance;
     Vector3 FingertipForward;
+    public string[] musics;
 
     void Start()
     {
         FingertipForward = fingertip.transform.TransformDirection(Vector3.forward);
-        touchDistance = 1f;
+        touchDistance = 0.5f;
     }
 
     // Update is called once per frame
@@ -22,17 +23,24 @@ public class TouchscreenController : MonoBehaviour
         if (Physics.Raycast(fingertip.transform.position, FingertipForward, out RaycastHit ray, touchDistance))
         {
             Collider rayCollider = ray.collider;
-            if (rayCollider.gameObject.name.Equals("Emocloche"))
+            foreach (string music in musics)
             {
-                rayCollider.gameObject.transform.Find("Light").GetComponent<Light>().enabled = true;
-                if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+                ui.gameObject.transform.Find(music).Find("Light").GetComponent<Light>().enabled = false;
+                if (rayCollider.gameObject.name.Equals(music))
                 {
-                    ui.SetActive(false);
-                    game.SetActive(true);
+                    rayCollider.gameObject.transform.Find("Light").GetComponent<Light>().enabled = true;
+                    if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+                    {
+                        ui.SetActive(false);
+                        game.SetActive(true);
+                    }
                 }
             }
-        } else {
-            ui.gameObject.transform.Find("Emocloche").Find("Light").GetComponent<Light>().enabled = false;
+        }
+        else
+        {
+            foreach (string music in musics)
+                ui.gameObject.transform.Find(music).Find("Light").GetComponent<Light>().enabled = false;
         }
     }
 }
