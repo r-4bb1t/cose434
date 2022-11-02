@@ -57,14 +57,13 @@ public class BoxScript : MonoBehaviour
 
     float FindDistance(GameObject note)
     {
-        // 10-scale
         Vector3 scale = note.transform.localScale;
         return (1.0f - scale.x);
     }
 
     bool IsPassed(GameObject note)
     {
-        return FindDistance(note) > 0;
+        return FindDistance(note) < 0;
     }
 
     public void Trigger()
@@ -77,6 +76,8 @@ public class BoxScript : MonoBehaviour
         if (notes.Count == 0) return;
         GameObject note = notes.Peek();
         float distance = Mathf.Abs(FindDistance(note));
+        Debug.Log(note);
+        Debug.Log(distance);
         if (distance > miss) return;
         if (distance > good)
         {
@@ -92,8 +93,6 @@ public class BoxScript : MonoBehaviour
         }
         notes.Dequeue();
         Destroy(note);
-
-        Debug.Log(distance);
     }
 
     public void AddNewNote(GameObject note)
