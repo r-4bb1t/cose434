@@ -79,6 +79,8 @@ public class makeNote : MonoBehaviour
             ln.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
             Destroy(ln, DURATION);
 
+            boxes[dir].GetComponent<BoxScript>().AddNewNote(ln);
+
             yield return new WaitForSeconds(delay);
         }
     }
@@ -216,5 +218,7 @@ public class makeNote : MonoBehaviour
     {
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
         UI.transform.Find("FPS").GetComponent<TextMeshPro>().text = "FPS " + (1.0f / deltaTime).ToString();
+
+        Debug.Log("???????");
     }
 }
