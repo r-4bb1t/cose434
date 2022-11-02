@@ -17,7 +17,7 @@ public class BoxScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (notes.Count > 0)
+        while (notes.Count > 0)
         {
             GameObject note = notes.Peek();
             float distance = FindDistance(note);
@@ -26,6 +26,10 @@ public class BoxScript : MonoBehaviour
                 /* MISS */
                 notes.Dequeue();
                 Destroy(note);
+            }
+            else
+            {
+                break;
             }
         }
     }
@@ -52,9 +56,8 @@ public class BoxScript : MonoBehaviour
 
     float FindDistance(GameObject note)
     {
-        Vector3 position = transform.position;
-        Vector3 diff = note.transform.position - position;
-        return diff.sqrMagnitude;
+        Vector3 scale = note.transform.localScale;
+        return Mathf.Abs(1.0f - scale.x) * 10;
     }
 
     bool IsPassed(GameObject note)
