@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BoxScript : MonoBehaviour
 {
-    public float perfect = 1.0f;
-    public float good = 10.0f;
-    public float miss = 100.0f;
+    public float perfect = 0.1f;
+    public float good = 0.5f;
+    public float miss = 1.0f;
     Queue<GameObject> notes = new Queue<GameObject>();
     public GameObject ring;
 
@@ -28,7 +28,6 @@ public class BoxScript : MonoBehaviour
                 Destroy(note);
             }
         }
-        Debug.Log(notes.Count);
     }
 
     /*GameObject FindClosestNote()
@@ -93,6 +92,8 @@ public class BoxScript : MonoBehaviour
         }
         notes.Dequeue();
         Destroy(note);
+
+        Debug.Log(distance);
     }
 
     public void AddNewNote(GameObject note)
