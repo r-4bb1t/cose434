@@ -77,7 +77,7 @@ public class makeNote : MonoBehaviour
             ln.transform.localPosition = Vector3.zero;
 
             ln.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
-            Destroy(ln, DURATION);
+            //Destroy(ln, DURATION);
 
             boxes[dir].GetComponent<BoxScript>().AddNewNote(ln);
 
@@ -98,7 +98,7 @@ public class makeNote : MonoBehaviour
             d.transform.localPosition = Vector3.zero;
 
             d.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
-            Destroy(d, DURATION);
+            //Destroy(d, DURATION);
 
             boxes[dir].GetComponent<BoxScript>().AddNewNote(d);
 
@@ -123,7 +123,7 @@ public class makeNote : MonoBehaviour
                 dn.transform.localPosition = Vector3.zero;
 
                 dn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
-                Destroy(dn, DURATION);
+                //Destroy(dn, DURATION);
 
                 boxes[i].GetComponent<BoxScript>().AddNewNote(dn);
             }
@@ -136,7 +136,7 @@ public class makeNote : MonoBehaviour
                 sn.transform.localPosition = Vector3.zero;
 
                 sn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
-                Destroy(sn, DURATION);
+                //Destroy(sn, DURATION);
 
                 boxes[i].GetComponent<BoxScript>().AddNewNote(sn);
 
@@ -174,7 +174,7 @@ public class makeNote : MonoBehaviour
                 en.transform.localPosition = Vector3.zero;
 
                 en.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
-                Destroy(en, DURATION);
+                //Destroy(en, DURATION);
 
                 boxes[i].GetComponent<BoxScript>().AddNewNote(en);
 
