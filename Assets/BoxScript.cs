@@ -6,7 +6,7 @@ public class BoxScript : MonoBehaviour
 {
     public float perfect = 1;
     public float good = 10;
-    GameObject[] notes = { };
+    Queue<GameObject> notes = new Queue<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -52,25 +52,26 @@ public class BoxScript : MonoBehaviour
         Debug.Log(nearest);
         Destroy(nearest.gameObject);*/
 
-        if (notes.GetLength == 0) return;
-        float distance = FindDistance(notes[0]);
+        if (notes.Count == 0) return;
+        GameObject note = notes.Peek();
+        float distance = FindDistance(note);
         if (distance > good) return;
         if (distance > perfect)
         {
             /* GOOD */
-            Destroy(notes[0]);
-            notes.Skip(1).toArray();
+            Destroy(note);
+            notes.Dequeue();
         }
         else
         {
             /* PERFECT */
-            Destroy(notes[0]);
-            notes.Skip(1).toArray();
+            Destroy(note);
+            notes.Dequeue();
         }
     }
 
     public void AddNewNote(GameObject note)
     {
-        notes.Push(note);
+        notes.Enqueue(note);
     }
 }
