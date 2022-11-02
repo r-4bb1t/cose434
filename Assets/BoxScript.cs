@@ -73,6 +73,7 @@ public class BoxScript : MonoBehaviour
         if (nearest == null) return;
         Debug.Log(nearest);
         Destroy(nearest.gameObject);*/
+        Debug.Log(notes.Count);
 
         if (notes.Count == 0) return;
         GameObject note = notes.Peek();
