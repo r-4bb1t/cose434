@@ -79,7 +79,7 @@ public class makeNote : MonoBehaviour
             ln.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
             //Destroy(ln, DURATION);
 
-            boxes[dir].GetComponent<BoxScript>().AddNewNote(ln);
+            boxes[dir].GetComponent<BoxScript>().AddNewNote(ln, 3);
 
             yield return new WaitForSeconds(delay);
         }
@@ -100,7 +100,7 @@ public class makeNote : MonoBehaviour
             d.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
             //Destroy(d, DURATION);
 
-            boxes[dir].GetComponent<BoxScript>().AddNewNote(d);
+            boxes[dir].GetComponent<BoxScript>().AddNewNote(d, 3);
 
             yield return new WaitForSeconds(delay / 2);
         }
@@ -125,7 +125,7 @@ public class makeNote : MonoBehaviour
                 dn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
                 //Destroy(dn, DURATION);
 
-                boxes[i].GetComponent<BoxScript>().AddNewNote(dn);
+                boxes[i].GetComponent<BoxScript>().AddNewNote(dn, 1);
             }
             if (note.noteType == 2)
             {
@@ -138,7 +138,7 @@ public class makeNote : MonoBehaviour
                 sn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
                 //Destroy(sn, DURATION);
 
-                boxes[i].GetComponent<BoxScript>().AddNewNote(sn);
+                boxes[i].GetComponent<BoxScript>().AddNewNote(sn, 2);
 
                 isLongNote[i] = true;
                 isDoub[i] = doub;
@@ -176,7 +176,7 @@ public class makeNote : MonoBehaviour
                 en.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
                 //Destroy(en, DURATION);
 
-                boxes[i].GetComponent<BoxScript>().AddNewNote(en);
+                boxes[i].GetComponent<BoxScript>().AddNewNote(en, 4);
 
                 isDoub[i] = false;
             }

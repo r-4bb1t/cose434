@@ -15,7 +15,7 @@ public class Check : MonoBehaviour
     {
         leftFingertipForward = leftFingertip.transform.TransformDirection(Vector3.forward);
         rightFingertipForward = rightFingertip.transform.TransformDirection(Vector3.forward);
-        touchDistance = 10f;
+        touchDistance = 0.5f;
     }
 
     void Update()
@@ -52,6 +52,17 @@ public class Check : MonoBehaviour
                     }
                 }
             }
+            if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
+            {
+                foreach (GameObject box in boxes)
+                {
+                    if (rayCollider.gameObject.name == box.name)
+                    {
+                        Debug.Log(rayCollider.gameObject.name);
+                        box.GetComponent<BoxScript>().LongTrigger();
+                    }
+                }
+            }
         }
         Debug.DrawRay(rightFingertip.transform.position, rightFingertipForward, Color.red);
         if (Physics.Raycast(rightFingertip.transform.position, rightFingertipForward, out RaycastHit ray2, touchDistance))
@@ -65,6 +76,17 @@ public class Check : MonoBehaviour
                     {
                         Debug.Log(rayCollider.gameObject.name);
                         box.GetComponent<BoxScript>().Trigger();
+                    }
+                }
+            }
+            if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
+            {
+                foreach (GameObject box in boxes)
+                {
+                    if (rayCollider.gameObject.name == box.name)
+                    {
+                        Debug.Log(rayCollider.gameObject.name);
+                        box.GetComponent<BoxScript>().LongTrigger();
                     }
                 }
             }

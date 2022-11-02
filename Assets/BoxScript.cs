@@ -8,12 +8,14 @@ public class BoxScript : MonoBehaviour
     public float good = 0.15f;
     public float miss = 0.2f;
     Queue<GameObject> notes = null;
+    Queue<int> noteTypes = null;
     public GameObject ring;
 
     // Start is called before the first frame update
     void Start()
     {
         notes = new Queue<GameObject>();
+        noteTypes = new Queue<int>();
     }
     // Update is called once per frame
     void Update()
@@ -27,6 +29,7 @@ public class BoxScript : MonoBehaviour
             {
                 /* MISS */
                 notes.Dequeue();
+                noteTypes.Dequeue();
                 Destroy(note);
             }
             else
@@ -94,11 +97,39 @@ public class BoxScript : MonoBehaviour
             /* PERFECT */
         }
         notes.Dequeue();
+        noteTypes.Dequeue();
         Destroy(note);
     }
 
-    public void AddNewNote(GameObject note)
+    public void LongTrigger(){
+        if (notes.Count == 0) return;
+        GameObject note = notes.Peek();
+        int noteType = noteTypes.Peek();
+        if(noteType < 3) return;
+        float distance = Mathf.Abs(FindDistance(note));
+        Debug.Log(note);
+        Debug.Log(distance);
+        if (distance > miss) return;
+        if (distance > good)
+        {
+            /* MISS */
+        }
+        else if (distance > perfect)
+        {
+            /* GOOD */
+        }
+        else
+        {
+            /* PERFECT */
+        }
+        notes.Dequeue();
+        noteTypes.Dequeue();
+        Destroy(note);
+    }
+
+    public void AddNewNote(GameObject note, int noteType)
     {
         notes.Enqueue(note);
+        noteTypes.Enqueue(noteType);
     }
 }
