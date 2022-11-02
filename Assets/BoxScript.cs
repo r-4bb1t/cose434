@@ -8,6 +8,7 @@ public class BoxScript : MonoBehaviour
     public float good = 10.0f;
     public float miss = 100.0f;
     Queue<GameObject> notes = new Queue<GameObject>();
+    public GameObject ring;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +17,14 @@ public class BoxScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(notes);
+        GameObject note = notes.Peek();
+        float distance = FindDistance(note);
+        if (distance > miss && IsPassed(note))
+        {
+            /* MISS */
+            notes.Dequeue();
+            Destroy(note);
+        }
     }
 
     /*GameObject FindClosestNote()
@@ -44,6 +52,16 @@ public class BoxScript : MonoBehaviour
         Vector3 position = transform.position;
         Vector3 diff = note.transform.position - position;
         return diff.sqrMagnitude;
+    }
+
+    bool IsPassed(GameObject note)
+    {
+        Vector3 ringPosition = ring.transform.position;
+        Vector3 diff1 = transform.position - ringPosition;
+        float distance1 = diff1.sqrMagnitude;
+        Vector3 diff2 = note.transform.position - ringPosition;
+        float distance2 = diff2.sqrMagnitude;
+        return distance1 > distance2;
     }
 
     public void Trigger()
@@ -76,6 +94,5 @@ public class BoxScript : MonoBehaviour
     public void AddNewNote(GameObject note)
     {
         notes.Enqueue(note);
-        Debug.Log("???????");
     }
 }

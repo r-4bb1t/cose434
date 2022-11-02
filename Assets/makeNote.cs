@@ -218,7 +218,5 @@ public class makeNote : MonoBehaviour
     {
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
         UI.transform.Find("FPS").GetComponent<TextMeshPro>().text = "FPS " + (1.0f / deltaTime).ToString();
-
-        Debug.Log("???????");
     }
 }
