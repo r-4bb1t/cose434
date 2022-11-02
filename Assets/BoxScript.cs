@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BoxScript : MonoBehaviour
 {
-    public float perfect = 0.1f;
-    public float good = 0.5f;
-    public float miss = 1.0f;
+    public float perfect = 1.0f;
+    public float good = 1.5f;
+    public float miss = 2.0f;
     Queue<GameObject> notes = new Queue<GameObject>();
     public GameObject ring;
 
@@ -57,8 +57,7 @@ public class BoxScript : MonoBehaviour
     float FindDistance(GameObject note)
     {
         Vector3 scale = note.transform.localScale;
-        Debug.Log(scale);
-        return Mathf.Abs(1.0f - scale.x) * 10;
+        return Mathf.Abs(10.0f - scale.x);
     }
 
     bool IsPassed(GameObject note)
