@@ -63,6 +63,7 @@ public class makeNote : MonoBehaviour
     private float OFFSET = 1.0f;
     private int DIROFFSET = 135;
     private float DURATION = 2f;
+    public GameObject[] boxes;
 
     IEnumerator MakeLongNote(int dir, float delay, bool doub)
     {
@@ -97,6 +98,8 @@ public class makeNote : MonoBehaviour
             d.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
             Destroy(d, DURATION);
 
+            boxes[dir].GetComponent<BoxScript>().AddNewNote(d);
+
             yield return new WaitForSeconds(delay / 2);
         }
     }
@@ -119,6 +122,8 @@ public class makeNote : MonoBehaviour
 
                 dn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
                 Destroy(dn, DURATION);
+
+                boxes[i].GetComponent<BoxScript>().AddNewNote(dn);
             }
             if (note.noteType == 2)
             {
@@ -130,6 +135,8 @@ public class makeNote : MonoBehaviour
 
                 sn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
                 Destroy(sn, DURATION);
+
+                boxes[i].GetComponent<BoxScript>().AddNewNote(sn);
 
                 isLongNote[i] = true;
                 isDoub[i] = doub;
@@ -166,6 +173,8 @@ public class makeNote : MonoBehaviour
 
                 en.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
                 Destroy(en, DURATION);
+
+                boxes[i].GetComponent<BoxScript>().AddNewNote(en);
 
                 isDoub[i] = false;
             }
