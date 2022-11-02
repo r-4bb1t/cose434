@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BoxScript : MonoBehaviour
 {
+    public float perfect = 1;
+    public float good = 10;
+    GameObject[] notes = { };
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +18,7 @@ public class BoxScript : MonoBehaviour
 
     }
 
-    GameObject FindClosestNote()
+    /*GameObject FindClosestNote()
     {
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("Note");
@@ -33,13 +36,41 @@ public class BoxScript : MonoBehaviour
             }
         }
         return closest;
+    }*/
+
+    float FindDistance(Gameobject note)
+    {
+        Vector3 position = transform.position;
+        Vector3 diff = note.transform.position - position;
+        return diff.sqrMagnitude;
     }
 
     public void Trigger()
     {
-        GameObject nearest = FindClosestNote();
+        /*GameObject nearest = FindClosestNote();
         if (nearest == null) return;
         Debug.Log(nearest);
-        Destroy(nearest.gameObject);
+        Destroy(nearest.gameObject);*/
+
+        if (notes.GetLength == 0) return;
+        float distance = FindDistance(notes[0]);
+        if (distance > good) return;
+        if (distance > perfect)
+        {
+            /* GOOD */
+            Destroy(notes[0]);
+            notes.Skip(1).toArray();
+        }
+        else
+        {
+            /* PERFECT */
+            Destroy(notes[0]);
+            notes.Skip(1).toArray();
+        }
+    }
+
+    public void AddNewNote(GameObject note)
+    {
+        notes.Push(note);
     }
 }
