@@ -4,42 +4,42 @@ using UnityEngine;
 
 public class BoxScript : MonoBehaviour
 {
-    Renderer m_Renderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_Renderer = GetComponent<Renderer>();
     }
-
-    private void OnCollisionEnter(Collision hand)
-    {
-        if (hand.collider.gameObject.CompareTag("Hand"))
-            m_Renderer.enabled = true;
-    }
-
-    /*     private void OnCollisionStay(Collision hand)
-        {
-            if (!hand.collider.gameObject.CompareTag("Hand")) return;
-
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
-            {
-            }
-
-            if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
-            { 
-            }
-        } */
-
-    private void OnCollisionExit(Collision hand)
-    {
-        if (hand.collider.gameObject.CompareTag("Hand"))
-            m_Renderer.enabled = false;
-    }
-
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    GameObject FindClosestNote()
+    {
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("Note");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        foreach (GameObject go in gos)
+        {
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+        }
+        return closest;
+    }
+
+    public void Trigger()
+    {
+        GameObject nearest = FindClosestNote();
+        if (nearest == null) return;
+        Debug.Log(nearest);
+        Destroy(nearest.gameObject);
     }
 }

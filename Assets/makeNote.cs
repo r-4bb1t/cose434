@@ -62,7 +62,7 @@ public class makeNote : MonoBehaviour
     private bool[] isDoub = { false, false, false, false, false, false, false, false };
     private float OFFSET = 1.0f;
     private int DIROFFSET = 135;
-    private float DURATION = 1.5f;
+    private float DURATION = 2f;
 
     IEnumerator MakeLongNote(int dir, float delay, bool doub)
     {
