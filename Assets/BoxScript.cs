@@ -38,7 +38,7 @@ public class BoxScript : MonoBehaviour
         return closest;
     }*/
 
-    float FindDistance(Gameobject note)
+    float FindDistance(GameObject note)
     {
         Vector3 position = transform.position;
         Vector3 diff = note.transform.position - position;
