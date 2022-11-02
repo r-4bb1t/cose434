@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class Check : MonoBehaviour
 {
-    public GameObject[] box = null;
+    public GameObject[] boxes = { null, null, null, null, null, null, null, null };
+    public GameObject[][] notes = { { }, { }, { }, { }, { }, { }, { }, { } };
 
     void Start()
     {
-
     }
 
     void Update()
@@ -19,10 +19,12 @@ public class Check : MonoBehaviour
     {
         if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
         { //왼손
+            console.log("left");
         }
 
         if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
         { //오른손
+            console.log("right");
         }
     }
 }
