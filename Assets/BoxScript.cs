@@ -17,14 +17,18 @@ public class BoxScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject note = notes.Peek();
-        float distance = FindDistance(note);
-        if (distance > miss && IsPassed(note))
+        if (notes.Count > 0)
         {
-            /* MISS */
-            notes.Dequeue();
-            Destroy(note);
+            GameObject note = notes.Peek();
+            float distance = FindDistance(note);
+            if (distance > miss && IsPassed(note))
+            {
+                /* MISS */
+                notes.Dequeue();
+                Destroy(note);
+            }
         }
+        Debug.Log(notes.Count);
     }
 
     /*GameObject FindClosestNote()
