@@ -57,6 +57,7 @@ public class BoxScript : MonoBehaviour
     float FindDistance(GameObject note)
     {
         Vector3 scale = note.transform.localScale;
+        Debug.Log(scale);
         return Mathf.Abs(1.0f - scale.x) * 10;
     }
 
