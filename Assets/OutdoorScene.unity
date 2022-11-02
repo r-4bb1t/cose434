@@ -8086,11 +8086,31 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 82f2f73ff2515fd439f73c748c12c87c, type: 2}
+    - target: {fileID: 6036125814278353206, guid: c5f858b5286c26b41ab2ec0be9557bd8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036125814278353206, guid: c5f858b5286c26b41ab2ec0be9557bd8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.006
+      objectReference: {fileID: 0}
     - target: {fileID: 6036125814278353210, guid: c5f858b5286c26b41ab2ec0be9557bd8,
         type: 3}
       propertyPath: ring
       value: 
       objectReference: {fileID: 682062832}
+    - target: {fileID: 6036125814428598404, guid: c5f858b5286c26b41ab2ec0be9557bd8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036125814428598404, guid: c5f858b5286c26b41ab2ec0be9557bd8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.006
+      objectReference: {fileID: 0}
     - target: {fileID: 6036125814428598408, guid: c5f858b5286c26b41ab2ec0be9557bd8,
         type: 3}
       propertyPath: ring
@@ -8110,6 +8130,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LightProbeUsage
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036125814482549837, guid: c5f858b5286c26b41ab2ec0be9557bd8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036125814482549837, guid: c5f858b5286c26b41ab2ec0be9557bd8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.006
       objectReference: {fileID: 0}
     - target: {fileID: 6036125814482549873, guid: c5f858b5286c26b41ab2ec0be9557bd8,
         type: 3}
@@ -8351,6 +8381,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 82f2f73ff2515fd439f73c748c12c87c, type: 2}
+    - target: {fileID: 6036125815584541274, guid: c5f858b5286c26b41ab2ec0be9557bd8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036125815584541274, guid: c5f858b5286c26b41ab2ec0be9557bd8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.006
+      objectReference: {fileID: 0}
     - target: {fileID: 6036125815584541278, guid: c5f858b5286c26b41ab2ec0be9557bd8,
         type: 3}
       propertyPath: ring
@@ -8376,11 +8416,31 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 82f2f73ff2515fd439f73c748c12c87c, type: 2}
+    - target: {fileID: 6036125815861977967, guid: c5f858b5286c26b41ab2ec0be9557bd8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036125815861977967, guid: c5f858b5286c26b41ab2ec0be9557bd8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.006
+      objectReference: {fileID: 0}
     - target: {fileID: 6036125815861978003, guid: c5f858b5286c26b41ab2ec0be9557bd8,
         type: 3}
       propertyPath: ring
       value: 
       objectReference: {fileID: 682062832}
+    - target: {fileID: 6036125816040386936, guid: c5f858b5286c26b41ab2ec0be9557bd8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036125816040386936, guid: c5f858b5286c26b41ab2ec0be9557bd8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.006
+      objectReference: {fileID: 0}
     - target: {fileID: 6036125816040386940, guid: c5f858b5286c26b41ab2ec0be9557bd8,
         type: 3}
       propertyPath: ring
@@ -8406,6 +8466,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 82f2f73ff2515fd439f73c748c12c87c, type: 2}
+    - target: {fileID: 6036125816203046449, guid: c5f858b5286c26b41ab2ec0be9557bd8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036125816203046449, guid: c5f858b5286c26b41ab2ec0be9557bd8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.006
+      objectReference: {fileID: 0}
     - target: {fileID: 6036125816203046453, guid: c5f858b5286c26b41ab2ec0be9557bd8,
         type: 3}
       propertyPath: ring
