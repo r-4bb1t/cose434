@@ -15,7 +15,7 @@ public class Check : MonoBehaviour
     {
         leftFingertipForward = leftFingertip.transform.TransformDirection(Vector3.forward);
         rightFingertipForward = rightFingertip.transform.TransformDirection(Vector3.forward);
-        touchDistance = 2f;
+        touchDistance = 10f;
     }
 
     void Update()
