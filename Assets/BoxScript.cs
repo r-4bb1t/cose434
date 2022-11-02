@@ -22,7 +22,8 @@ public class BoxScript : MonoBehaviour
         {
             GameObject note = notes.Peek();
             float distance = FindDistance(note);
-            if (distance > miss && IsPassed(note))
+            Debug.Log(distance)
+            if (distance < -miss)
             {
                 /* MISS */
                 notes.Dequeue();
