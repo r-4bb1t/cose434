@@ -39,7 +39,7 @@ public class BoxScript : MonoBehaviour
     {
         GameObject nearest = FindClosestNote();
         if (nearest == null) return;
-        Debug.Log(nearest.gameObject);
+        Debug.Log(nearest);
         Destroy(nearest.gameObject);
     }
 }
