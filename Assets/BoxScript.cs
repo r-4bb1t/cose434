@@ -7,12 +7,13 @@ public class BoxScript : MonoBehaviour
     public float perfect = 1.0f;
     public float good = 1.5f;
     public float miss = 2.0f;
-    Queue<GameObject> notes = new Queue<GameObject>();
+    Queue<GameObject> notes = null;
     public GameObject ring;
 
     // Start is called before the first frame update
     void Start()
     {
+        notes = new Queue<GameObject>();
     }
     // Update is called once per frame
     void Update()
