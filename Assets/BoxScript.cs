@@ -41,7 +41,7 @@ public class BoxScript : MonoBehaviour
         {
             GameObject note = notes.Peek();
             float distance = Mathf.Abs(FindDistance(note));
-            if (IsPassed(note) && distance > miss)
+            if (IsPassed(note) && distance > miss * 3)
             {
                 /* MISS */
                 //Debug.Log("MISS OUT");
