@@ -20,6 +20,20 @@ public class BoxScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.gameObject.name == gameObject.name)
+                {
+                    Trigger();
+                }
+            }
+        }
+
         while (notes.Count > 0)
         {
             GameObject note = notes.Peek();
@@ -76,7 +90,7 @@ public class BoxScript : MonoBehaviour
         if (nearest == null) return;
         Debug.Log(nearest);
         Destroy(nearest.gameObject);*/
-        
+
         if (notes.Count < 1) return;
         GameObject note = notes.Peek();
         float distance = Mathf.Abs(FindDistance(note));
@@ -101,11 +115,12 @@ public class BoxScript : MonoBehaviour
         Destroy(note);
     }
 
-    public void LongTrigger(){
+    public void LongTrigger()
+    {
         if (notes.Count < 1) return;
         GameObject note = notes.Peek();
         int noteType = noteTypes.Peek();
-        if(noteType < 3) return;
+        if (noteType < 3) return;
         float distance = Mathf.Abs(FindDistance(note));
         if (distance > miss) return;
         else
