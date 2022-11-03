@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 
 public class Check : MonoBehaviour
@@ -17,6 +18,9 @@ public class Check : MonoBehaviour
     private GameObject rightHover = null;
     private GameObject leftHover = null;
 
+    public int score = 0;
+    public GameObject UI;
+
     void Start()
     {
         leftFingertipForward = new Vector3(0, 0, 1);
@@ -26,20 +30,26 @@ public class Check : MonoBehaviour
 
     void Update()
     {
-        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.PrimaryHandTrigger)) {
-            if(!isRightKeyDown) isRightKeyDown = true;
+        UI.transform.Find("Score").GetComponent<TextMeshPro>().text = score.ToString();
+
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
+        {
+            if (!isRightKeyDown) isRightKeyDown = true;
             else isRightKeyDown = false;
         }
-        if (!(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))) {
-            if(isRightKeyDown) isRightKeyDown = false;
+        if (!(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.PrimaryHandTrigger)))
+        {
+            if (isRightKeyDown) isRightKeyDown = false;
         }
 
-        if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)) {
-            if(!isLeftKeyDown) isLeftKeyDown = true;
+        if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
+        {
+            if (!isLeftKeyDown) isLeftKeyDown = true;
             else isLeftKeyDown = false;
         }
-        if (!(OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))) {
-            if(isLeftKeyDown) isLeftKeyDown = false;
+        if (!(OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)))
+        {
+            if (isLeftKeyDown) isLeftKeyDown = false;
         }
 
         checkButton();
@@ -65,7 +75,7 @@ public class Check : MonoBehaviour
                     box.transform.Find("Light").GetComponent<Light>().enabled = true;
                 }
             }*/
-            
+
             foreach (GameObject box in boxes)
             {
                 if (rayCollider1.gameObject.name.Equals(box.name))
@@ -95,10 +105,11 @@ public class Check : MonoBehaviour
                 }
             }
         }
-        else {
+        else
+        {
             //foreach (GameObject box in boxes) box.transform.Find("Light").GetComponent<Light>().enabled = false;
             leftHover = null;
-            foreach (GameObject box in boxes) box.GetComponent<Renderer>().material.color = new Color(255/ 255f, 255/ 255f, 255/ 255f, 64 / 255f);
+            foreach (GameObject box in boxes) box.GetComponent<Renderer>().material.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 64 / 255f);
         }
 
 
@@ -146,14 +157,16 @@ public class Check : MonoBehaviour
                 }
             }
         }
-        else {
+        else
+        {
             //foreach (GameObject box in boxes) box.transform.Find("Light").GetComponent<Light>().enabled = false;
             rightHover = null;
         }
 
-        foreach (GameObject box in boxes) {
-            if((leftHover != null && leftHover.name.Equals(box.name)) || (rightHover != null && rightHover.name.Equals(box.name))) box.GetComponent<Renderer>().material.color = new Color(255/ 255f, 255/ 255f, 150/ 255f, 200 / 255f);
-            else box.GetComponent<Renderer>().material.color = new Color(255/ 255f, 255/ 255f, 255/ 255f, 64 / 255f);
+        foreach (GameObject box in boxes)
+        {
+            if ((leftHover != null && leftHover.name.Equals(box.name)) || (rightHover != null && rightHover.name.Equals(box.name))) box.GetComponent<Renderer>().material.color = new Color(255 / 255f, 255 / 255f, 150 / 255f, 200 / 255f);
+            else box.GetComponent<Renderer>().material.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 64 / 255f);
         }
     }
 }

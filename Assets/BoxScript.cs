@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BoxScript : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class BoxScript : MonoBehaviour
     Queue<GameObject> notes = null;
     Queue<int> noteTypes = null;
     public GameObject ring;
+    public GameObject UI;
+    public GameObject check;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +45,9 @@ public class BoxScript : MonoBehaviour
             {
                 /* MISS */
                 //Debug.Log("MISS OUT");
+                UI.transform.Find("Checker").GetComponent<TextMeshPro>().text = "MISS";
+                UI.transform.Find("Checker").GetComponent<TextMeshPro>().color = Color.red;
+
                 notes.Dequeue();
                 noteTypes.Dequeue();
                 Destroy(note);
@@ -99,16 +105,24 @@ public class BoxScript : MonoBehaviour
         {
             /* MISS */
             Debug.Log("MISS");
+            UI.transform.Find("Checker").GetComponent<TextMeshPro>().text = "MISS";
+            UI.transform.Find("Checker").GetComponent<TextMeshPro>().color = Color.red;
         }
         else if (distance > perfect)
         {
             /* GOOD */
             Debug.Log("GOOD");
+            UI.transform.Find("Checker").GetComponent<TextMeshPro>().text = "GOOD";
+            UI.transform.Find("Checker").GetComponent<TextMeshPro>().color = Color.blue;
+            check.GetComponent<Check>().score += 50;
         }
         else
         {
             /* PERFECT */
             Debug.Log("PERFECT");
+            UI.transform.Find("Checker").GetComponent<TextMeshPro>().text = "PERFECT";
+            UI.transform.Find("Checker").GetComponent<TextMeshPro>().color = Color.green;
+            check.GetComponent<Check>().score += 100;
         }
         notes.Dequeue();
         noteTypes.Dequeue();
