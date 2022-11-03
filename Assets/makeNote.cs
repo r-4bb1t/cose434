@@ -54,7 +54,7 @@ public class makeNote : MonoBehaviour
     public GameObject check;
     NoteParent script;
     Chart data;
-    int n = 4500;
+    int n = 4700;
     float deltaTime = 0.0f;
     private AudioSource audioSource;
     private IEnumerator[] makeLongNote = { null, null, null, null, null, null, null, null };
@@ -114,8 +114,8 @@ public class makeNote : MonoBehaviour
 
         if (data.barNumber <= n / 48)
         {
-            CancelInvoke("MakeNote");
             Invoke("EndGame", 2f);
+            CancelInvoke("MakeNote");
             return;
         }
 
@@ -211,9 +211,10 @@ public class makeNote : MonoBehaviour
 
     void EndGame()
     {
-        result.gameObject.SetActive(true);
-        result.transform.Find("Score").GetComponent<TextMeshPro>().text = check.GetComponent<Check>().score.ToString("n");
-        game.gameObject.SetActive(false);
+        int score = check.GetComponent<Check>().score;
+        game.SetActive(false);
+        result.SetActive(true);
+        result.transform.Find("Score").GetComponent<TextMeshProUGUI>().text = score.ToString();
     }
 
     private void Awake()
@@ -228,6 +229,7 @@ public class makeNote : MonoBehaviour
         SetUI();
         Invoke("setBgm", 5f);
         InvokeRepeating("MakeNote", 5f + OFFSET, 60f / (float)data.bpm / num);
+        n = 0;
     }
 
     // Update is called once per frame

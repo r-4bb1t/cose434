@@ -23,7 +23,6 @@ public class BoxScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        OVRInput.Update();
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -61,7 +60,6 @@ public class BoxScript : MonoBehaviour
     }
 
     void FixedUpdate() {
-        OVRInput.FixedUpdate();
     }
 
     /*GameObject FindClosestNote()

@@ -20,7 +20,6 @@ public class TouchscreenController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(fingertip.transform.position, FingertipForward, Color.red);
         if (Physics.Raycast(fingertip.transform.position, FingertipForward, out RaycastHit ray, touchDistance))
         {
             Collider rayCollider = ray.collider;
