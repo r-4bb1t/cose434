@@ -50,9 +50,11 @@ public class makeNote : MonoBehaviour
     public GameObject dotDouble;
     public GameObject UI;
     public GameObject game;
+    public GameObject result;
+    public GameObject check;
     NoteParent script;
     Chart data;
-    int n;
+    int n = 4500;
     float deltaTime = 0.0f;
     private AudioSource audioSource;
     private IEnumerator[] makeLongNote = { null, null, null, null, null, null, null, null };
@@ -109,6 +111,14 @@ public class makeNote : MonoBehaviour
     void MakeNote()
     {
         int noteCnt = 0;
+
+        if (data.barNumber <= n / 48)
+        {
+            CancelInvoke("MakeNote");
+            Invoke("EndGame", 2f);
+            return;
+        }
+
         for (int i = 0; i < 8; i++) if (data.bars[n / 48].beats[n % 48].notes[i].noteType == 1 || data.bars[n / 48].beats[n % 48].notes[i].noteType == 2) noteCnt++;
         bool doub = (noteCnt >= 2);
         for (int i = 0; i < 8; i++)
@@ -197,6 +207,13 @@ public class makeNote : MonoBehaviour
         AudioClip audioAsset = (AudioClip)Resources.Load("Audio/emocloche");
         audioSource.clip = (AudioClip)audioAsset;
         audioSource.Play();
+    }
+
+    void EndGame()
+    {
+        result.gameObject.SetActive(true);
+        result.transform.Find("Score").GetComponent<TextMeshPro>().text = check.GetComponent<Check>().score.ToString("n");
+        game.gameObject.SetActive(false);
     }
 
     private void Awake()
