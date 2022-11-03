@@ -50,9 +50,11 @@ public class makeNote : MonoBehaviour
     public GameObject dotDouble;
     public GameObject UI;
     public GameObject game;
+    public GameObject result;
+    public GameObject check;
     NoteParent script;
     Chart data;
-    int n;
+    int n = 4500;
     float deltaTime = 0.0f;
     private AudioSource audioSource;
     private IEnumerator[] makeLongNote = { null, null, null, null, null, null, null, null };
@@ -61,8 +63,9 @@ public class makeNote : MonoBehaviour
     private bool[] isLongNote = { false, false, false, false, false, false, false, false };
     private bool[] isDoub = { false, false, false, false, false, false, false, false };
     private float OFFSET = 1.0f;
-    private int DIROFFSET = 135;
+    private int DIROFFSET = -45;
     private float DURATION = 2f;
+    public GameObject[] boxes;
 
     IEnumerator MakeLongNote(int dir, float delay, bool doub)
     {
@@ -75,8 +78,10 @@ public class makeNote : MonoBehaviour
             ln.transform.SetParent(game.transform);
             ln.transform.localPosition = Vector3.zero;
 
-            ln.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
-            Destroy(ln, DURATION);
+            ln.GetComponent<NoteParent>().dir = dir * 45 + DIROFFSET;
+            //Destroy(ln, DURATION);
+
+            boxes[dir].GetComponent<BoxScript>().AddNewNote(ln, 3);
 
             yield return new WaitForSeconds(delay);
         }
@@ -94,8 +99,10 @@ public class makeNote : MonoBehaviour
             d.transform.SetParent(game.transform);
             d.transform.localPosition = Vector3.zero;
 
-            d.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
-            Destroy(d, DURATION);
+            d.GetComponent<NoteParent>().dir = dir * 45 + DIROFFSET;
+            //Destroy(d, DURATION);
+
+            boxes[dir].GetComponent<BoxScript>().AddNewNote(d, 3);
 
             yield return new WaitForSeconds(delay / 2);
         }
@@ -104,6 +111,14 @@ public class makeNote : MonoBehaviour
     void MakeNote()
     {
         int noteCnt = 0;
+
+        if (data.barNumber <= n / 48)
+        {
+            CancelInvoke("MakeNote");
+            Invoke("EndGame", 2f);
+            return;
+        }
+
         for (int i = 0; i < 8; i++) if (data.bars[n / 48].beats[n % 48].notes[i].noteType == 1 || data.bars[n / 48].beats[n % 48].notes[i].noteType == 2) noteCnt++;
         bool doub = (noteCnt >= 2);
         for (int i = 0; i < 8; i++)
@@ -117,8 +132,10 @@ public class makeNote : MonoBehaviour
                 dn.transform.SetParent(game.transform);
                 dn.transform.localPosition = Vector3.zero;
 
-                dn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
-                Destroy(dn, DURATION);
+                dn.GetComponent<NoteParent>().dir = i * 45 + DIROFFSET;
+                //Destroy(dn, DURATION);
+
+                boxes[i].GetComponent<BoxScript>().AddNewNote(dn, 1);
             }
             if (note.noteType == 2)
             {
@@ -128,8 +145,10 @@ public class makeNote : MonoBehaviour
                 sn.transform.SetParent(game.transform);
                 sn.transform.localPosition = Vector3.zero;
 
-                sn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
-                Destroy(sn, DURATION);
+                sn.GetComponent<NoteParent>().dir = i * 45 + DIROFFSET;
+                //Destroy(sn, DURATION);
+
+                boxes[i].GetComponent<BoxScript>().AddNewNote(sn, 2);
 
                 isLongNote[i] = true;
                 isDoub[i] = doub;
@@ -164,8 +183,10 @@ public class makeNote : MonoBehaviour
                 en.transform.SetParent(game.transform);
                 en.transform.localPosition = Vector3.zero;
 
-                en.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
-                Destroy(en, DURATION);
+                en.GetComponent<NoteParent>().dir = i * 45 + DIROFFSET;
+                //Destroy(en, DURATION);
+
+                boxes[i].GetComponent<BoxScript>().AddNewNote(en, 4);
 
                 isDoub[i] = false;
             }
@@ -186,6 +207,13 @@ public class makeNote : MonoBehaviour
         AudioClip audioAsset = (AudioClip)Resources.Load("Audio/emocloche");
         audioSource.clip = (AudioClip)audioAsset;
         audioSource.Play();
+    }
+
+    void EndGame()
+    {
+        result.gameObject.SetActive(true);
+        result.transform.Find("Score").GetComponent<TextMeshPro>().text = check.GetComponent<Check>().score.ToString("n");
+        game.gameObject.SetActive(false);
     }
 
     private void Awake()
