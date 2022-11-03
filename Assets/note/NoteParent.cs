@@ -6,6 +6,10 @@ public class NoteParent : MonoBehaviour
 {
     public int dir;
 
+    void Awake(){
+        transform.localScale = new Vector3(0f, 0f, 0f);
+    }
+
     void Start()
     {
         transform.localScale = new Vector3(0f, 0f, 0f);
