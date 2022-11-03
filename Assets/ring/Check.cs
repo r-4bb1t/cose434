@@ -39,7 +39,7 @@ public class Check : MonoBehaviour
             {
                 foreach (GameObject box in boxes)
                 {
-                    if (rayCollider.gameObject.name == box.name)
+                    if (rayCollider.gameObject.name.Equals(box.name))
                     {
                         box.GetComponent<BoxScript>().Trigger();
                     }
@@ -49,7 +49,7 @@ public class Check : MonoBehaviour
             {
                 foreach (GameObject box in boxes)
                 {
-                    if (rayCollider.gameObject.name == box.name)
+                    if (rayCollider.gameObject.name.Equals(box.name))
                     {
                         box.GetComponent<BoxScript>().LongTrigger();
                     }
@@ -64,7 +64,7 @@ public class Check : MonoBehaviour
             {
                 foreach (GameObject box in boxes)
                 {
-                    if (rayCollider.gameObject.name == box.name)
+                    if (rayCollider.gameObject.name.Equals(box.name))
                     {
                         box.GetComponent<BoxScript>().Trigger();
                     }
@@ -74,7 +74,7 @@ public class Check : MonoBehaviour
             {
                 foreach (GameObject box in boxes)
                 {
-                    if (rayCollider.gameObject.name == box.name)
+                    if (rayCollider.gameObject.name.Equals(box.name))
                     {
                         box.GetComponent<BoxScript>().LongTrigger();
                     }
