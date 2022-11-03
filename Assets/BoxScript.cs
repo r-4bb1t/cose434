@@ -24,8 +24,7 @@ public class BoxScript : MonoBehaviour
         {
             GameObject note = notes.Peek();
             float distance = FindDistance(note);
-            Debug.Log(distance);
-            if (distance < -miss)
+            if (distance < -miss * 2)
             {
                 /* MISS */
                 notes.Dequeue();
@@ -76,25 +75,27 @@ public class BoxScript : MonoBehaviour
         if (nearest == null) return;
         Debug.Log(nearest);
         Destroy(nearest.gameObject);*/
-        Debug.Log(notes.Count);
 
+        Debug.Log("Triggered");
+        
         if (notes.Count == 0) return;
         GameObject note = notes.Peek();
         float distance = Mathf.Abs(FindDistance(note));
-        Debug.Log(note);
-        Debug.Log(distance);
         if (distance > miss) return;
         if (distance > good)
         {
             /* MISS */
+            Debug.Log("MISS");
         }
         else if (distance > perfect)
         {
             /* GOOD */
+            Debug.Log("GOOD");
         }
         else
         {
             /* PERFECT */
+            Debug.Log("PERFECT");
         }
         notes.Dequeue();
         noteTypes.Dequeue();
@@ -107,20 +108,11 @@ public class BoxScript : MonoBehaviour
         int noteType = noteTypes.Peek();
         if(noteType < 3) return;
         float distance = Mathf.Abs(FindDistance(note));
-        Debug.Log(note);
-        Debug.Log(distance);
         if (distance > miss) return;
-        if (distance > good)
-        {
-            /* MISS */
-        }
-        else if (distance > perfect)
-        {
-            /* GOOD */
-        }
         else
         {
             /* PERFECT */
+            Debug.Log("PERFECT");
         }
         notes.Dequeue();
         noteTypes.Dequeue();

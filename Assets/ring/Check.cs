@@ -31,12 +31,6 @@ public class Check : MonoBehaviour
 
     void checkButton()
     {
-        float val = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
-        if (val > 0.7f)
-        {
-            OVRInput.SetControllerVibration(0.1f/*frequency*/, 0.1f/*amplitude*/, OVRInput.Controller.RTouch);
-        }
-
         Debug.DrawRay(leftFingertip.transform.position, leftFingertipForward, Color.red);
         if (Physics.Raycast(leftFingertip.transform.position, leftFingertipForward, out RaycastHit ray1, touchDistance))
         {
@@ -47,7 +41,6 @@ public class Check : MonoBehaviour
                 {
                     if (rayCollider.gameObject.name == box.name)
                     {
-                        Debug.Log(rayCollider.gameObject.name);
                         box.GetComponent<BoxScript>().Trigger();
                     }
                 }
@@ -58,7 +51,6 @@ public class Check : MonoBehaviour
                 {
                     if (rayCollider.gameObject.name == box.name)
                     {
-                        Debug.Log(rayCollider.gameObject.name);
                         box.GetComponent<BoxScript>().LongTrigger();
                     }
                 }
@@ -74,7 +66,6 @@ public class Check : MonoBehaviour
                 {
                     if (rayCollider.gameObject.name == box.name)
                     {
-                        Debug.Log(rayCollider.gameObject.name);
                         box.GetComponent<BoxScript>().Trigger();
                     }
                 }
@@ -85,7 +76,6 @@ public class Check : MonoBehaviour
                 {
                     if (rayCollider.gameObject.name == box.name)
                     {
-                        Debug.Log(rayCollider.gameObject.name);
                         box.GetComponent<BoxScript>().LongTrigger();
                     }
                 }
