@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BoxScript : MonoBehaviour
 {
-    public float perfect = 0.1f;
-    public float good = 0.15f;
-    public float miss = 0.2f;
+    public float perfect = 0.2f;
+    public float good = 0.3f;
+    public float miss = 0.4f;
     Queue<GameObject> notes = null;
     Queue<int> noteTypes = null;
     public GameObject ring;
@@ -23,10 +23,11 @@ public class BoxScript : MonoBehaviour
         while (notes.Count > 0)
         {
             GameObject note = notes.Peek();
-            float distance = FindDistance(note);
-            if (distance < -miss * 2)
+            float distance = Mathf.Abs(FindDistance(note));
+            if (IsPassed(note) && distance > miss)
             {
                 /* MISS */
+                //Debug.Log("MISS OUT");
                 notes.Dequeue();
                 noteTypes.Dequeue();
                 Destroy(note);
@@ -66,7 +67,7 @@ public class BoxScript : MonoBehaviour
 
     bool IsPassed(GameObject note)
     {
-        return FindDistance(note) < 0;
+        return note.transform.localScale.x > 1.0f;
     }
 
     public void Trigger()
@@ -75,10 +76,8 @@ public class BoxScript : MonoBehaviour
         if (nearest == null) return;
         Debug.Log(nearest);
         Destroy(nearest.gameObject);*/
-
-        Debug.Log("Triggered");
         
-        if (notes.Count == 0) return;
+        if (notes.Count < 1) return;
         GameObject note = notes.Peek();
         float distance = Mathf.Abs(FindDistance(note));
         if (distance > miss) return;
@@ -103,7 +102,7 @@ public class BoxScript : MonoBehaviour
     }
 
     public void LongTrigger(){
-        if (notes.Count == 0) return;
+        if (notes.Count < 1) return;
         GameObject note = notes.Peek();
         int noteType = noteTypes.Peek();
         if(noteType < 3) return;
@@ -112,7 +111,7 @@ public class BoxScript : MonoBehaviour
         else
         {
             /* PERFECT */
-            Debug.Log("PERFECT");
+            Debug.Log("PERFECT LONG");
         }
         notes.Dequeue();
         noteTypes.Dequeue();
