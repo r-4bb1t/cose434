@@ -76,7 +76,7 @@ public class makeNote : MonoBehaviour
             ln.transform.SetParent(game.transform);
             ln.transform.localPosition = Vector3.zero;
 
-            ln.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
+            ln.GetComponent<NoteParent>().dir = -dir * 45 + DIROFFSET;
             //Destroy(ln, DURATION);
 
             boxes[dir].GetComponent<BoxScript>().AddNewNote(ln, 3);
@@ -97,7 +97,7 @@ public class makeNote : MonoBehaviour
             d.transform.SetParent(game.transform);
             d.transform.localPosition = Vector3.zero;
 
-            d.GetComponent<NoteParent>().dir = (dir + DIROFFSET) * 45;
+            d.GetComponent<NoteParent>().dir = -dir * 45 + DIROFFSET;
             //Destroy(d, DURATION);
 
             boxes[dir].GetComponent<BoxScript>().AddNewNote(d, 3);
@@ -122,7 +122,7 @@ public class makeNote : MonoBehaviour
                 dn.transform.SetParent(game.transform);
                 dn.transform.localPosition = Vector3.zero;
 
-                dn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
+                dn.GetComponent<NoteParent>().dir = -i * 45 + DIROFFSET;
                 //Destroy(dn, DURATION);
 
                 boxes[i].GetComponent<BoxScript>().AddNewNote(dn, 1);
@@ -135,7 +135,7 @@ public class makeNote : MonoBehaviour
                 sn.transform.SetParent(game.transform);
                 sn.transform.localPosition = Vector3.zero;
 
-                sn.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
+                sn.GetComponent<NoteParent>().dir = -i * 45 + DIROFFSET;
                 //Destroy(sn, DURATION);
 
                 boxes[i].GetComponent<BoxScript>().AddNewNote(sn, 2);
@@ -173,7 +173,7 @@ public class makeNote : MonoBehaviour
                 en.transform.SetParent(game.transform);
                 en.transform.localPosition = Vector3.zero;
 
-                en.GetComponent<NoteParent>().dir = (i + DIROFFSET) * 45;
+                en.GetComponent<NoteParent>().dir = -i * 45 + DIROFFSET;
                 //Destroy(en, DURATION);
 
                 boxes[i].GetComponent<BoxScript>().AddNewNote(en, 4);
