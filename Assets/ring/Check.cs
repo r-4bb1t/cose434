@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-
+using OVR;
 
 public class Check : MonoBehaviour
 {
@@ -17,6 +17,8 @@ public class Check : MonoBehaviour
 
     private GameObject rightHover = null;
     private GameObject leftHover = null;
+    private GameObject rightClick = null;
+    private GameObject leftClick = null;
 
     public int score = 0;
     public GameObject UI;
@@ -25,14 +27,14 @@ public class Check : MonoBehaviour
     {
         leftFingertipForward = new Vector3(0, 0, 1);
         rightFingertipForward = new Vector3(0, 0, 1);
-        touchDistance = 0.5f;
+        touchDistance = 1.0f;
     }
 
     void Update()
     {
         UI.transform.Find("Score").GetComponent<TextMeshPro>().text = score.ToString();
 
-        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
+        /*if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
         {
             if (!isRightKeyDown) isRightKeyDown = true;
             else isRightKeyDown = false;
@@ -50,13 +52,9 @@ public class Check : MonoBehaviour
         if (!(OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)))
         {
             if (isLeftKeyDown) isLeftKeyDown = false;
-        }
+        }*/
 
         checkButton();
-    }
-
-    void FixedUpdate()
-    {
     }
 
     void checkButton()
@@ -66,16 +64,6 @@ public class Check : MonoBehaviour
         {
             Collider rayCollider1 = ray1.collider;
 
-            /*foreach (GameObject box in boxes)
-            {
-                box.transform.Find("Light").GetComponent<Light>().enabled = false;
-                if (rayCollider1.gameObject.name.Equals(box.name))
-                {
-                    Debug.Log("left " + rayCollider1.gameObject.name + " " + box.name);
-                    box.transform.Find("Light").GetComponent<Light>().enabled = true;
-                }
-            }*/
-
             foreach (GameObject box in boxes)
             {
                 if (rayCollider1.gameObject.name.Equals(box.name))
@@ -84,17 +72,18 @@ public class Check : MonoBehaviour
                 }
             }
 
-            if (isLeftKeyDown)
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
                 foreach (GameObject box in boxes)
                 {
                     if (rayCollider1.gameObject.name.Equals(box.name))
                     {
                         box.GetComponent<BoxScript>().Trigger();
+                        leftClick = box;
                     }
                 }
             }
-            if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
+            if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
             {
                 foreach (GameObject box in boxes)
                 {
@@ -104,12 +93,11 @@ public class Check : MonoBehaviour
                     }
                 }
             }
+            else leftClick = null;
         }
         else
         {
-            //foreach (GameObject box in boxes) box.transform.Find("Light").GetComponent<Light>().enabled = false;
             leftHover = null;
-            foreach (GameObject box in boxes) box.GetComponent<Renderer>().material.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 64 / 255f);
         }
 
 
@@ -117,16 +105,6 @@ public class Check : MonoBehaviour
         if (Physics.Raycast(rightFingertip.transform.position, rightFingertipForward, out RaycastHit ray2, touchDistance))
         {
             Collider rayCollider2 = ray2.collider;
-
-            /*foreach (GameObject box in boxes)
-            {
-                box.transform.Find("Light").GetComponent<Light>().enabled = false;
-                if (rayCollider2.gameObject.name.Equals(box.name))
-                {
-                    Debug.Log("right " + rayCollider2.gameObject.name + " " + box.name);
-                    box.transform.Find("Light").GetComponent<Light>().enabled = true;
-                }
-            }*/
 
             foreach (GameObject box in boxes)
             {
@@ -136,17 +114,18 @@ public class Check : MonoBehaviour
                 }
             }
 
-            if (isRightKeyDown)
+            if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
             {
                 foreach (GameObject box in boxes)
                 {
                     if (rayCollider2.gameObject.name.Equals(box.name))
                     {
                         box.GetComponent<BoxScript>().Trigger();
+                        rightClick = box;
                     }
                 }
             }
-            if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
+            if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
             {
                 foreach (GameObject box in boxes)
                 {
@@ -156,16 +135,17 @@ public class Check : MonoBehaviour
                     }
                 }
             }
+            else rightClick = null;
         }
         else
         {
-            //foreach (GameObject box in boxes) box.transform.Find("Light").GetComponent<Light>().enabled = false;
             rightHover = null;
         }
 
         foreach (GameObject box in boxes)
         {
-            if ((leftHover != null && leftHover.name.Equals(box.name)) || (rightHover != null && rightHover.name.Equals(box.name))) box.GetComponent<Renderer>().material.color = new Color(255 / 255f, 255 / 255f, 150 / 255f, 200 / 255f);
+            if ((leftClick != null && leftClick.name.Equals(box.name)) || (rightClick != null && rightClick.name.Equals(box.name))) box.GetComponent<Renderer>().material.color = new Color(255 / 255f, 0 / 255f, 0 / 255f, 200 / 255f);
+            else if ((leftHover != null && leftHover.name.Equals(box.name)) || (rightHover != null && rightHover.name.Equals(box.name))) box.GetComponent<Renderer>().material.color = new Color(255 / 255f, 255 / 255f, 150 / 255f, 200 / 255f);
             else box.GetComponent<Renderer>().material.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 64 / 255f);
         }
     }

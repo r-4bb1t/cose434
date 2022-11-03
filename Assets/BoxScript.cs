@@ -5,9 +5,9 @@ using TMPro;
 
 public class BoxScript : MonoBehaviour
 {
-    public float perfect = 0.2f;
-    public float good = 0.3f;
-    public float miss = 0.4f;
+    public float perfect = 0.6f;
+    public float good = 0.8f;
+    public float miss = 0.9f;
     Queue<GameObject> notes = null;
     Queue<int> noteTypes = null;
     public GameObject ring;
@@ -23,6 +23,7 @@ public class BoxScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        OVRInput.Update();
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -41,7 +42,7 @@ public class BoxScript : MonoBehaviour
         {
             GameObject note = notes.Peek();
             float distance = Mathf.Abs(FindDistance(note));
-            if (IsPassed(note) && distance > miss * 3)
+            if (IsPassed(note) && distance > 0.5)
             {
                 /* MISS */
                 //Debug.Log("MISS OUT");
@@ -57,6 +58,10 @@ public class BoxScript : MonoBehaviour
                 break;
             }
         }
+    }
+
+    void FixedUpdate() {
+        OVRInput.FixedUpdate();
     }
 
     /*GameObject FindClosestNote()
@@ -104,14 +109,14 @@ public class BoxScript : MonoBehaviour
         if (distance > good)
         {
             /* MISS */
-            Debug.Log("MISS");
+            //Debug.Log("MISS");
             UI.transform.Find("Checker").GetComponent<TextMeshPro>().text = "MISS";
             UI.transform.Find("Checker").GetComponent<TextMeshPro>().color = Color.red;
         }
         else if (distance > perfect)
         {
             /* GOOD */
-            Debug.Log("GOOD");
+           // Debug.Log("GOOD");
             UI.transform.Find("Checker").GetComponent<TextMeshPro>().text = "GOOD";
             UI.transform.Find("Checker").GetComponent<TextMeshPro>().color = Color.blue;
             check.GetComponent<Check>().score += 50;
@@ -119,11 +124,12 @@ public class BoxScript : MonoBehaviour
         else
         {
             /* PERFECT */
-            Debug.Log("PERFECT");
+            //Debug.Log("PERFECT");
             UI.transform.Find("Checker").GetComponent<TextMeshPro>().text = "PERFECT";
             UI.transform.Find("Checker").GetComponent<TextMeshPro>().color = Color.green;
             check.GetComponent<Check>().score += 100;
         }
+
         notes.Dequeue();
         noteTypes.Dequeue();
         Destroy(note);
@@ -131,20 +137,25 @@ public class BoxScript : MonoBehaviour
 
     public void LongTrigger()
     {
-        if (notes.Count < 1) return;
-        GameObject note = notes.Peek();
-        int noteType = noteTypes.Peek();
-        if (noteType < 3) return;
-        float distance = Mathf.Abs(FindDistance(note));
-        if (distance > miss) return;
-        else
-        {
-            /* PERFECT */
-            Debug.Log("PERFECT LONG");
+        while(notes.Count > 0){
+            GameObject note = notes.Peek();
+            int noteType = noteTypes.Peek();
+            if (noteType < 3) return;
+            float distance = Mathf.Abs(FindDistance(note));
+            if (distance > miss) return;
+            else
+            {
+                /* PERFECT */
+                //Debug.Log("PERFECT LONG");
+                UI.transform.Find("Checker").GetComponent<TextMeshPro>().text = "PERFECT";
+                UI.transform.Find("Checker").GetComponent<TextMeshPro>().color = Color.green;
+                check.GetComponent<Check>().score += 100;
+            }
+
+            notes.Dequeue();
+            noteTypes.Dequeue();
+            Destroy(note);
         }
-        notes.Dequeue();
-        noteTypes.Dequeue();
-        Destroy(note);
     }
 
     public void AddNewNote(GameObject note, int noteType)
